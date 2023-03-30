@@ -1,25 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { Box, Flex } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import Sidebar from './components/sidebar';
+import Visualiser from './components/visualizer';
+import Sort from './utils/sort';
+import SortingAlgorithm from './utils/algorithms/SortingAlgorithm';
 function App() {
+  const [arr, setArr] = useState<number[]>([]);
+  const [generating, setGenerating] = useState(false);
+  const [sorting, setSorting] = useState(false);
+
+  const generateArr = (formState: { size: number }) => {
+    setGenerating(true);
+    setTimeout(() => {
+      let newArr = [];
+      while (newArr.length <= formState.size) {
+        let random = Math.floor(Math.random() * (200 - 10) + 10);
+        if (newArr.indexOf(random) === -1) {
+          newArr.push(random);
+        }
+      }
+      setArr([...newArr]);
+      setGenerating(false);
+    }, 500)
+  };
+
+  const sort = (algorithm: SortingAlgorithm) => {
+    setSorting(true);
+    setTimeout(() => {
+      let sort = new Sort(algorithm);
+      setArr(sort.sort(arr, setArr))
+    }, 500);
+  };
+
+  useEffect(() => {
+    generateArr({ size: 10 });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box p={"4"}>
+      <Flex gap={"4"}>
+        <Sidebar
+          generateArr={generateArr}
+          sort={sort}
+        />
+        <Visualiser data={arr} />
+      </Flex>
+    </Box>
   );
 }
 
