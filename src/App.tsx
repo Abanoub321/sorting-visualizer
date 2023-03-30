@@ -38,7 +38,12 @@ function App() {
 
   return (
     <Box p={"4"}>
-      <Flex gap={"4"}>
+       {/* 
+        to be column on mobile and row on desktop
+       */}
+      <Flex gap={"4"}
+        direction={["column", "column", "row"]}
+      >
         <Sidebar
           generateArr={generateArr}
           sort={sort}
