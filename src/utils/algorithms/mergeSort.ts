@@ -32,7 +32,9 @@ export default class MergeSort implements SortingAlgorithm {
             }
             index++;
         }
-        setState([...array]);
+        setTimeout(() => {
+            setState([...array]);
+        }, 500);
         while (left < middle) {
             array[index] = arrayCopy[left];
             left++;

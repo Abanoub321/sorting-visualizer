@@ -15,9 +15,9 @@ function App() {
       let newArr = [];
       while (newArr.length <= formState.size) {
         let random = Math.floor(Math.random() * (200 - 10) + 10);
-        if (newArr.indexOf(random) === -1) {
+        // if (newArr.indexOf(random) === -1) {
           newArr.push(random);
-        }
+        // }
       }
       setArr([...newArr]);
       setGenerating(false);
@@ -28,7 +28,7 @@ function App() {
     setSorting(true);
     setTimeout(() => {
       let sort = new Sort(algorithm);
-      setArr(sort.sort(arr, setArr))
+      sort.sort(arr, setArr)
     }, 500);
   };
 

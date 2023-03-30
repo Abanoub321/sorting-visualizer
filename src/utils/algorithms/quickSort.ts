@@ -7,10 +7,6 @@ export default class QuickSort implements SortingAlgorithm {
             return sortedArray;
         }
         
-        setTimeout(() => {
-            setState([...sortedArray]);
-        }, 1000);
-
         let pivot = sortedArray[0];
         let left: number[] = [];
         let right: number[] = [];
@@ -25,7 +21,7 @@ export default class QuickSort implements SortingAlgorithm {
         let sortedArrayCopy = [...this.sort(left, setState), pivot, ...this.sort(right, setState)];
         setTimeout(() => {
             setState([...sortedArrayCopy]);
-        }, 1000);
+        }, 2500);
         return sortedArrayCopy;
     }
 }
