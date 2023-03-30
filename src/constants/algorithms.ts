@@ -8,14 +8,6 @@ import {
 
 const algorithms = [
     {
-        name: "Quick Sort",
-        algorithm: new QuickSort()
-    },
-    {
-        name: "Merge Sort",
-        algorithm: new MergeSort()
-    },
-    {
         name: "Bubble Sort",
         algorithm: new BubbleSort()
     },
@@ -26,6 +18,14 @@ const algorithms = [
     {
         name: "Insertion Sort",
         algorithm: new InsertionSort()
+    },
+    {
+        name: "Quick Sort",
+        algorithm: new QuickSort()
+    },
+    {
+        name: "Merge Sort",
+        algorithm: new MergeSort()
     },
 ]
 
